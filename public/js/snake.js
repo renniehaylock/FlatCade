@@ -16,7 +16,7 @@ var ctx = c.getContext('2d');
 var paused = true;
 c.width = width;
 c.height = height;
-ctx.fillStyle = "#111111";
+ctx.fillStyle = "#16A085";
 ctx.lineWidth = 2;
 ctx.fillRect(0, 0, c.width, c.height);
 
