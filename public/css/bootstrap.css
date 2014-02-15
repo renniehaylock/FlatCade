@@ -760,6 +760,7 @@ pre code {
   margin-right: auto;
   margin-left: auto;
   width:600px;
+    z-index:2;
 }
 
 .container-fluid {
@@ -5854,6 +5855,7 @@ td.visible-print {
     position:absolute;
     top:15px;
     left:5%;
+    z-index:3;
 }
 
 #level {
@@ -5882,6 +5884,7 @@ td.visible-print {
     background-color: #2C3E50;
     text-align:center;
     padding-top: 15%;
+    z-index:4;
 }
 
 .btn-container {
@@ -5909,4 +5912,20 @@ td.visible-print {
     bottom:10px;
     letter-spacing: 0;
 
+}
+
+
+
+.instructions {
+    
+}
+
+.center-in-page {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    text-align:center;
+    padding-top: 255px;
 }

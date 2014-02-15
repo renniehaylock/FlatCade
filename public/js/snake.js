@@ -13,6 +13,7 @@ var level = 6;
 //canvas, the only one supported by all 
 //browsers for now
 var ctx = c.getContext('2d');
+var paused = true;
 c.width = width;
 c.height = height;
 ctx.fillStyle = "#16A085";
@@ -63,13 +64,26 @@ var getLevelName = function(i) {
 // -----------
 function Game() {
     this.isOver = false;
-    
 }
-    
+
 Game.prototype.end = function(){
     //newGame();
     clearInterval(snakeInterval);
     document.getElementById('game-over').style.display = "inline";
+}
+
+Game.prototype.pause = function(){
+    clearInterval(snakeInterval);
+    document.getElementById('paused').style.display = "inline";
+    paused = true;
+}
+
+Game.prototype.restart = function(){
+    clearInterval(snakeInterval);
+    snakeInterval = setInterval(main, 100/level);
+    document.getElementById('paused').style.display = "none";
+    document.getElementById('instructions').style.display = "none";
+    paused = false;
 }
 
 var newGame = function () {
@@ -250,9 +264,14 @@ Points.prototype.reset = function(){
 // KEYBOARD CONTROL
 // --------------------
 // Handle keyboard controls
-var codek
 addEventListener("keydown", function (e) {
     head.setDir(e.keyCode);
+    if (e.keyCode == 32 && paused == false) {
+        game.pause();
+    }
+    else if (e.keyCode == 32 && paused == true) {
+        game.restart();
+    }
 }, false);
 
 // APPLICATION
@@ -347,6 +366,5 @@ var updateHTML = function(points, level) {
 
 // START GAME!
 clearInterval(snakeInterval);
-var snakeInterval = setInterval(main, 100/level); // Execute as fast as possible
+var snakeInterval; // Execute as fast as possible
 updateHTML(points.pts, level);
-
