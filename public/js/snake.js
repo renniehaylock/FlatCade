@@ -4,8 +4,9 @@
 var width = 600;
 //height of canvas
 var height = 500;
-var c = document.getElementById('snake-cnv');
+var c = document.getElementById('cnv');
 var speed = 10;
+var c2 = document.getElementById('cnv2');
 var size = 10;
 var ptsPerFood = 10;
 var level = 6;
@@ -13,9 +14,12 @@ var level = 6;
 //canvas, the only one supported by all 
 //browsers for now
 var ctx = c.getContext('2d');
+var ctx2 = c2.getContext('2d');
 var paused = true;
 c.width = width;
 c.height = height;
+c2.width = width;
+c2.height = height;
 ctx.fillStyle = "#16A085";
 ctx.lineWidth = 2;
 ctx.fillRect(0, 0, c.width, c.height);
@@ -90,7 +94,7 @@ Game.prototype.restart = function(){
 var newGame = function () {
     clearInterval(snakeInterval);
     //snakeInterval = setInterval(main, 50); // Execute as fast as possible
-    ctx.fillRect(0, 0, c.width, c.height);
+    ctx2.fillRect(0, 0, c.width, c.height);
     head.setX(100);
     head.setY(100);
     head.changeDir("right");
@@ -317,28 +321,24 @@ var update = function() {
 
 // Draw everything
 var render = function () {
-	ctx.font = "24px Helvetica";
-	ctx.textAlign = "left";
-	ctx.textBaseline = "top";
     //Draw food
     var snakeFood = new Image();
     snakeFood.src = 'images/snake-food.png';
     snakeFood.onload = function() {
-        ctx.drawImage(snakeFood, food.x, food.y);
-    }    
+        ctx2.drawImage(snakeFood, food.x, food.y);
+    }
     //Clear last rectangle
     //Draw new rectangle for head
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(head.x, head.y, size,size);
+    ctx2.fillStyle = "#FFFFFF";
+    ctx2.fillRect(head.x, head.y, size,size);
     // Draw the body of the snake
     bodyLength = body.length;
     for (var i=0; i < bodyLength;i++) {
-            ctx.fillStyle = "#FFFFFF";
-            ctx.fillRect(body[i].x, body[i].y, size,size);
+            ctx2.fillStyle = "#FFFFFF";
+            ctx2.fillRect(body[i].x, body[i].y, size,size);
     }
     //Clear the last item in the body of the snake
-    ctx.fillStyle = "#16A085";
-    ctx.fillRect(body[bodyLength - 1].x, body[bodyLength - 1].y, size,size);
+    ctx2.clearRect(body[bodyLength - 1].x, body[bodyLength - 1].y, size, size);
 };
     
 //MAIN GAME LOOP
@@ -359,10 +359,11 @@ var updateHTML = function(points, level) {
            levelHtml = levelHtml + '<li><a href="game.html?snake&' + i + '">' +  getLevelName(i) + '</a></li>';
     }
 
-    var dropdownHtml1 = '<button class="btn btn-primary dropdown-toggle current-level" data-toggle="dropdown">'+ getLevelName(level) + '<span class="caret"></span></button><span class="dropdown-arrow dropdown-arrow-inverse"></span><ul class="dropdown-menu dropdown-inverse dropdown-item">';
+    var dropdownHtml1 = '<button class="btn btn-primary dropdown-toggle current-level" data-toggle="dropdown">'+ getLevelName(level) + '<span class="caret"></span></button><span class="dropdown-arrow "></span><ul class="dropdown-menu dropdown-item">';
 
     document.getElementById("dropdown").innerHTML = dropdownHtml1 + levelHtml + '</u>';
     document.getElementById("game-over-dropdown").innerHTML = levelHtml;
+    document.getElementById("small-instructions").innerHTML = "move with &nbsp; &#8592 &nbsp; &#8593; &nbsp; &#8594; &nbsp; &#8595;";
 }
 
 // START GAME!

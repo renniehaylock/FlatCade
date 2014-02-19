@@ -22,8 +22,13 @@ var addClassToBody = function(cssClass) {
 
 // DOM is updated
 var updatePage = function(name) {
-    document.getElementById("game-name").innerHTML = capitaliseFirstLetter(gameName);
-    document.title = capitaliseFirstLetter(gameName);
+    if (gameName == "spaceinvaders") { // space invaders needs a break because of length
+        document.getElementById("game-name").innerHTML = "Invaders";
+        document.title = capitaliseFirstLetter(gameName);
+    } else {
+        document.getElementById("game-name").innerHTML = capitaliseFirstLetter(gameName);
+        document.title = capitaliseFirstLetter(gameName);
+    }
     // Adds proper script
     document.body.appendChild(script);
     // Change BG color
@@ -33,7 +38,7 @@ var updatePage = function(name) {
     if (gameName == "pacman") {
         addClassToBody("palette-sun-flower");
     }
-    if (gameName == "space") {
+    if (gameName == "spaceinvaders") {
         addClassToBody("palette-wet-asphalt");
     }
 }

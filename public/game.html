@@ -18,16 +18,21 @@
     <![endif]-->
   </head>
   <body style="overflow: hidden">
-          <div class="h1 text-inverse game-title">
-              <div id="game-name">Snake</div>
-              <div class="dropdown" id="dropdown"></div>
-          </div>
+      <div class="h1 text-inverse game-title">
+          <div id="game-name">Snake</div>
+          <div class="dropdown" id="dropdown"></div>
+      </div>
+      <a class="text-inverse" id="home" href="index.html">back to FlatCade</a>
       <div id="points" class="lead text-inverse">0  pts</div>
+      <div id="game-info" class="lead text-inverse"></div>
       <div class="container">
           <div class="game-container">
-              <canvas id='snake-cnv'></canvas>
-                    <div class="center-in-page lead text-inverse container t" id="instructions">
-                      press spacebar to start or pause
+              <canvas id='cnv'></canvas>
+              <canvas id="cnv2"></canvas>
+              <canvas id="cnv3"></canvas>
+                  <div class="center-in-page lead text-inverse container t" id="instructions">
+                      <div id="main-instructions">press spacebar to start or pause</div>
+                      <div class="small-instructions" id="small-instructions"></div>
                   </div>
                   <div class="center-in-page lead text-inverse container" id="paused" style="display:none">
                       Paused
@@ -36,11 +41,13 @@
           </div>
 
       </div>
-      <div class="game-over text-inverse palette-midnight-blue" id="game-over" style="display:none">
+      
+      
+      <div class="game-over text-inverse palette-pomegranate" id="game-over" style="display:none">
           <div class="h1 container huge-text">Game Over</div>
           <div class="btn-container">
             <div class="dropdown">
-              <button class="btn btn-info btn-hg btn-wide dropdown-toggle" data-toggle="dropdown">Retry<span class="caret"></span></button>
+              <button class="btn btn-danger btn-hg btn-wide dropdown-toggle" data-toggle="dropdown">Retry<span class="caret"></span></button>
               <span class="dropdown-arrow"></span>
               <ul class="dropdown-menu" id="game-over-dropdown">
               </u>
@@ -49,7 +56,25 @@
           <a href="index.html" class="btn btn-danger btn-hg btn-wide pull-right">Exit</a>
           </div>
       </div>
-    <!-- /.container -->
+      
+      
+      <div class="you-win text-inverse palette-nephritis" id="you-win" style="display:none">
+          <div class="h1 container huge-text">You Win</div>
+          <div class="btn-container">
+            <div class="dropdown">
+              <button class="btn btn-success btn-hg btn-wide dropdown-toggle" data-toggle="dropdown">New Level<span class="caret"></span></button>
+              <span class="dropdown-arrow"></span>
+              <ul class="dropdown-menu" id="you-win-dropdown">
+              </u>
+            </div>
+          &nbsp; &nbsp;
+          <a href="index.html" class="btn btn-success btn-hg btn-wide pull-right">Exit</a>
+          </div>
+      </div>    <!-- /.container -->
+      
+      <div>
+      
+      </div>
 
     <script src="js/gamechoice.js"></script>
     <!-- Load JS here for greater good =============================-->
