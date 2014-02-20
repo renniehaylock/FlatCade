@@ -5915,6 +5915,10 @@ td.visible-print {
 
 }
 
+.subtitle a {
+    color:#95A5A6  ;
+}
+
 
 
 .instructions {
@@ -5983,4 +5987,25 @@ padding-left: 10px;
     overflow:auto;
     z-index:7;
     font-size: 15px;
+}
+
+#home:hover {
+    opacity: 0.5;
+    color: #000000;
+}
+
+
+
+#author {
+    position:absolute;
+    top: 5%;
+    left: 5%;
+    overflow:auto;
+    z-index:7;
+    font-size: 15px;
+    color: #BDC3C7;
+}
+
+#author:hover {
+    color: #95A5A6;
 }
