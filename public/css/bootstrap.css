@@ -5999,7 +5999,7 @@ padding-left: 10px;
 #author {
     position:absolute;
     top: 5%;
-    left: 5%;
+    right: 5%;
     overflow:auto;
     z-index:7;
     font-size: 15px;
@@ -6012,5 +6012,5 @@ padding-left: 10px;
 
 .fb-like {
     position:absolute !important;
-    right: 5%;
+    left: 5%;
 }
