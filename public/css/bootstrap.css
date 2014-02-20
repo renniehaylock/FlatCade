@@ -6011,6 +6011,6 @@ padding-left: 10px;
 }
 
 .fb-like {
-    position:absolute;
+    position:absolute !important;
     right: 5%;
 }
